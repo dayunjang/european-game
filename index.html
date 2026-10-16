@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="ko"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;What's in my bag? - 유럽 여행 가방 싸기&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="/socket.io/socket.io.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--primary: #4f46e5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--primary-hover: #4338ca;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--bg-color: #f8fafc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--card-bg: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--text-main: #1e293b;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--border-color: #e2e8f0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--bg-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--text-main);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 700px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 35px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h2 { color: var(--primary); margin-bottom: 10px; font-size: 26px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>h3 { font-size: 20px; margin-top: 15px; color: #334155; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>p { color: #64748b; font-size: 15px; line-height: 1.5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 80%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 320px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 14px 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: border-color 0.2s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="text"]:focus { border-color: var(--primary); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 14px 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: background 0.2s, transform 0.1s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn:hover { background: var(--primary-hover); transform: translateY(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-teacher { background: #059669; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-teacher:hover { background: #047857; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 가방 싸기 아이템 버튼 디자인 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.options-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(2, 1fr);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 25px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f1f5f9;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #475569;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.2s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-btn:hover { background: #e2e8f0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-btn.selected {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e0e7ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.score-badge {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #ede9fe;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: var(--primary);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 6px 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.teacher-panel-btns {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ul#student-list {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f8fafc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid var(--border-color);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-height: 150px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ul#student-list li {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 6px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #e2e8f0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 초기 로그인 화면 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="login-screen" class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;🌍 What's in my bag?&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;유럽 여행 가방 싸기 인터랙티브 수업 자료&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="text" id="student-name" placeholder="이름 또는 모둠명을 입력하세요"&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" onclick="joinAsStudent()"&gt;학생으로 참여하기&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-teacher" onclick="joinAsTeacher()"&gt;교사 제어판 접속&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 학생 게임 화면 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="student-screen" class="card" style="display:none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="score-badge"&gt;현재 내 점수: &lt;span id="s-score"&gt;0&lt;/span&gt;점&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 id="s-title"&gt;선생님의 시작을 기다리는 중...&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="game-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;잠시만 기다려 주세요. 수업이 곧 시작됩니다.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 교사 통제 화면 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="teacher-screen" class="card" style="display:none; text-align: left;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 style="text-align: center;"&gt;👨‍🏫 교사 제어 모니터링 패널&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="text-align: center;"&gt;학급 상황에 맞게 단계와 여행지를 통제하세요.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;1. 여행지 선택&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="teacher-panel-btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(0)"&gt;런던(여름)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(1)"&gt;아테네(여름)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(2)"&gt;모스크바(여름)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(3)"&gt;파리(겨울)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(4)"&gt;리스본(겨울)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn" style="padding: 10px 14px; font-size: 14px;" onclick="setCity(5)"&gt;로바니에미(겨울)&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;2. 수업 단계 제어&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="teacher-panel-btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-teacher" onclick="setStep('location')"&gt;① 위치 찾기&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-teacher" onclick="setStep('packing')"&gt;② 가방 싸기&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-teacher" onclick="setStep('result')"&gt;③ 정답 공개&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;📊 실시간 접속 학생 현황&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;ul id="student-list"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li style="color: #94a3b8; text-align: center; border: none;"&gt;접속한 학생이 없습니다.&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const socket = io();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let role = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let selectedBag = [];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function joinAsStudent() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const name = document.getElementById('student-name').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!name) return alert('이름 또는 모둠명을 입력해주세요!');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>role = 'student';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.emit('join_game', { name: name });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('login-screen').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('student-screen').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function joinAsTeacher() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>role = 'teacher';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('login-screen').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('teacher-screen').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setCity(index) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.emit('teacher_command', { action: 'change_city', index: index });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function setStep(step) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.emit('teacher_command', { action: 'next_step', step: step });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>socket.on('update_state', (state) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (role === 'teacher') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const listEl = document.getElementById('student-list');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>listEl.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const ids = Object.keys(state.students);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (ids.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>listEl.innerHTML = '&lt;li style="color: #94a3b8; text-align: center; border: none;"&gt;접속한 학생이 없습니다.&lt;/li&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ids.forEach(id =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const s = state.students[id];</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>listEl.innerHTML += `&lt;li&gt;👤 &lt;b&gt;${s.name}&lt;/b&gt; — &lt;b&gt;${s.score}점&lt;/b&gt;&lt;/li&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (role === 'student') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const myData = state.students[socket.id];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (myData) document.getElementById('s-score').innerText = myData.score;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const city = state.cities[state.currentCityIndex];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const contentEl = document.getElementById('game-content');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (state.step === 'waiting') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('s-title').innerText = '선생님의 다음 지시를 기다리는 중...';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contentEl.innerHTML = '&lt;p&gt;화면을 주목해주세요!&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (state.step === 'location') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('s-title').innerText = `📍 [${city.season}] 도시 위치 파악하기`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contentEl.innerHTML = `&lt;div style="background:#f1f5f9; padding:20px; border-radius:12px; margin:20px 0;"&gt;&lt;strong&gt;지리 힌트:&lt;/strong&gt; ${city.hint}&lt;/div&gt;&lt;p&gt;제시된 힌트와 국기를 보고 지도에서 알맞은 국가를 찾아보세요.&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (state.step === 'packing') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('s-title').innerText = `🧳 ${city.name} (${city.climate} 기후) 가방 싸기`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let html = `&lt;p&gt;기후 특성에 알맞은 준비물을 모두 골라 담아주세요!&lt;/p&gt;&lt;div class="options-grid"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>city.options.forEach(opt =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const isSel = selectedBag.includes(opt) ? 'selected' : '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>html += `&lt;div class="item-btn ${isSel}" onclick="toggleItem('${opt}')"&gt;${opt}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>html += `&lt;/div&gt;&lt;button class="btn" style="width:100%; margin-top:10px;" onclick="submitBag()"&gt;가방 싸기 완료 제출&lt;/button&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contentEl.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (state.step === 'result') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('s-title').innerText = `✨ ${city.name} 정답 및 해설`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>contentEl.innerHTML = `&lt;div style="background:#ecfdf5; border:1px solid #a7f3d0; padding:20px; border-radius:12px; margin:20px 0; color:#065f46;"&gt;&lt;h3 style="margin-top:0; color:#047857;"&gt;정답 준비물&lt;/h3&gt;&lt;p style="font-size:18px; font-weight:bold; color:#065f46;"&gt;${city.answer.join(', ')}&lt;/p&gt;&lt;/div&gt;&lt;p&gt;선생님의 설명을 들으며 기후적 원인과 인간 생활의 관계를 정리해 봅시다!&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function toggleItem(item) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const idx = selectedBag.indexOf(item);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (idx &gt; -1) selectedBag.splice(idx, 1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else selectedBag.push(item);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btns = document.querySelectorAll('.item-btn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btns.forEach(b =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (selectedBag.includes(b.innerText)) b.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else b.classList.remove('selected');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function submitBag() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (selectedBag.length === 0) return alert('준비물을 최소 한 개 이상 골라주세요!');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>socket.emit('submit_bag', selectedBag);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert('답안이 제출되었습니다! 결과를 기다려주세요.');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>selectedBag = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>socket.on('result_feedback', (res) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>alert(res.message);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
